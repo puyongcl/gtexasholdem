@@ -1,8 +1,9 @@
-package poker
+package compare
 
 import (
 	"fmt"
 	"github.com/json-iterator/go"
+	"gtexasholdem/poker"
 	"io/ioutil"
 )
 
@@ -47,11 +48,11 @@ func (matches *Matches) ExcuteCompare() {
 }
 
 func Compare(a, b string) (int, string) {
-	w1, err, res1 := CalcWeightByPokerFaceAndColor(a)
+	w1, err, res1 := poker.CalcWeight(a)
 	if err != nil {
 		return 0, ""
 	}
-	w2, err, res2 := CalcWeightByPokerFaceAndColor(b)
+	w2, err, res2 := poker.CalcWeight(b)
 	if err != nil {
 		return 0, ""
 	}
@@ -70,4 +71,3 @@ func winner(a, b int) int {
 		return 0
 	}
 }
-
